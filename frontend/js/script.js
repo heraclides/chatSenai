@@ -62,7 +62,6 @@ const scrollScreen = () => {
 
 const processMessage = ({ data }) => {
     const { userId, userName, userColor, content } = JSON.parse(data)
-    websocket.send(`Usuario: ${user.name} entrou no chat`)
     const message =
         userId == user.id
             ? createMessageSelfElement(content)
