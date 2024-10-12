@@ -84,7 +84,6 @@ const handleLogin = (event) => {
     chat.style.display = "flex"
 
     websocket = new WebSocket("wss://chatbackend-77rc.onrender.com")
-    websocket.onopen = () => websocket.send{`Usuario: ${user.name} entrou no chat`}
     websocket.onmessage = processMessage
 
 const sendMessage = (event) => {
