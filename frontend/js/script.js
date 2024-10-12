@@ -62,7 +62,7 @@ const scrollScreen = () => {
 
 const processMessage = ({ data }) => {
     const { userId, userName, userColor, content } = JSON.parse(data)
-
+    websocket.send(`Usuario: ${user.name} entrou no chat`)
     const message =
         userId == user.id
             ? createMessageSelfElement(content)
@@ -85,7 +85,6 @@ const handleLogin = (event) => {
 
     websocket = new WebSocket("wss://chatbackend-77rc.onrender.com")
     websocket.onmessage = processMessage
-    websocker.onopen = websocket.send(`Usuario: ${user.name} entrou no chat`)
 }
 
 const sendMessage = (event) => {
