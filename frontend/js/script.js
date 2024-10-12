@@ -85,6 +85,7 @@ const handleLogin = (event) => {
 
     websocket = new WebSocket("wss://chatbackend-77rc.onrender.com")
     websocket.onmessage = processMessage
+}
 
 const sendMessage = (event) => {
     event.preventDefault()
