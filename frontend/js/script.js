@@ -72,18 +72,6 @@ const processMessage = ({ data }) => {
     scrollScreen()
 }
 
-// const messageLogin = () => {
-//     const div = document.createElement("div")
-//     const loginMessage ={
-//         userId: user.id,
-//         userName: user.name,
-//         userColor: user.color,
-//         content: `O usuário ${user.name} entrou no chat`
-//     }
-    
-//     websocket.send(JSON.stringify(loginMessage))
-// }
-
 const handleLogin = (event) => {
     event.preventDefault()
 
@@ -91,11 +79,21 @@ const handleLogin = (event) => {
     user.name = loginInput.value
     user.color = getRandomColor()
 
-    login.style.display = "none"
-    chat.style.display = "flex"
+    const loginMessage ={
+        userId: user.id,
+        userName: user.name,
+        userColor: user.color,
+        content: `O usuário ${user.name} entrou no chat`
+    }
 
     websocket = new WebSocket("wss://chatbackend-77rc.onrender.com")
     websocket.onmessage = processMessage
+
+    websocket.addEventListener("open", () =>{
+        websocket.send(JSON.stringify(loginMessage))
+    })
+    login.style.display = "none"
+    chat.style.display = "flex"
 }
 
 const sendMessage = (event) => {
