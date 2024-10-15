@@ -72,6 +72,18 @@ const processMessage = ({ data }) => {
     scrollScreen()
 }
 
+// const messageLogin = () => {
+//     const div = document.createElement("div")
+//     const loginMessage ={
+//         userId: user.id,
+//         userName: user.name,
+//         userColor: user.color,
+//         content: `O usuário ${user.name} entrou no chat`
+//     }
+    
+//     websocket.send(JSON.stringify(loginMessage))
+// }
+
 const handleLogin = (event) => {
     event.preventDefault()
 
