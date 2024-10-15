@@ -79,21 +79,14 @@ const handleLogin = (event) => {
     user.name = loginInput.value
     user.color = getRandomColor()
 
-    const loginMessage ={
-        userId: user.id,
-        userName: user.name,
-        userColor: user.color,
-        content: `O usuário ${user.name} entrou no chat`
-    }
+     login.style.display = "none"
+    chat.style.display = "flex"
 
     websocket = new WebSocket("wss://chatbackend-77rc.onrender.com")
     websocket.onmessage = processMessage
 
-    websocket.addEventListener("open", () =>{
-        websocket.send(JSON.stringify(loginMessage))
-    })
-    login.style.display = "none"
-    chat.style.display = "flex"
+    
+   
 }
 
 const sendMessage = (event) => {
